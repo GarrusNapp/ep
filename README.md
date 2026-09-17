@@ -11,7 +11,7 @@ npm install
 npm run start:dev
 ```
 
-Konfiguracja przez zmienne środowiskowe — pełny schemat w
+Konfiguracja przez zmienne środowiskowe — plik .env na podstawie schematu w
 [src/config/configuration.ts](./src/config/configuration.ts), przykładowe wartości
 w [.example.env](./.example.env).
 
@@ -52,6 +52,8 @@ POST   /files/:type/_exists      batch: lista ID → tier ({"ids":[...]})
 `id`/`type` są walidowane whitelistą znaków — patrz
 [safe-id.validator.ts](./src/common/validators/safe-id.validator.ts).
 
+swagger dostępny pod `http://localhost:3000/docs`
+
 ## uwagi
 
 1. **Hot jest tierem, nie cache'em.** Plik trafia wyłącznie do hot storage;
@@ -60,15 +62,15 @@ POST   /files/:type/_exists      batch: lista ID → tier ({"ids":[...]})
    wszystko, co nie zdążyło zmigrować do archiwum.
 
 2. **Odrzucona alternatywa**:
-   - _write-through_ (każdy zapis od razu na archive, hot jako wyrzucalny
+   - _write-through_ (każdy zapis od razu na archive, hot jako
      cache) — odrzucone, bo np. przy S3 oznaczałoby
      to płatny zapis nawet dla plików usuniętych po chwili
 
 3. **Skalowanie poziome wymaga**: (a) `FileIndex` na
-   wspólny backend (np. Redis), (b) hot
+   wspólny backend (np. Redis adapter), (b) hot
    storage też na wspólny backend (inaczej instancja B nie znajdzie u siebie
    pliku, który indeks każe jej szukać lokalnie), (c) lock/leader election dla
    crona archiwizacyjnego (bez tego dwie instancje zarchiwizują ten sam plik
    równolegle).
 
-Skrypt wypełniający serwis: `scripts/seed-files.sh`
+Skrypt wypełniający serwis plikami: `scripts/seed-files.sh`
