@@ -25,4 +25,4 @@ function requirePath(path: string | undefined, envVar: string): string {
   ],
   exports: [HotStorage, ArchiveStorage],
 })
-export class StorageModule { }
+export class StorageModule {}

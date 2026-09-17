@@ -9,7 +9,8 @@ export class ListFilesResponse {
   @ApiProperty({
     type: String,
     nullable: true,
-    description: 'Cursor to pass as `cursor` to fetch the next page, or null if there is none',
+    description:
+      'Cursor to pass as `cursor` to fetch the next page, or null if there is none',
   })
   nextCursor!: SafeId | null;
 

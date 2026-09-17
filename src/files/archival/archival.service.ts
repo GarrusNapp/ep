@@ -22,7 +22,7 @@ export class ArchivalService implements OnModuleInit, OnModuleDestroy {
     private readonly index: FileIndex,
     private readonly config: AppConfig,
     private readonly scheduler: SchedulerRegistry,
-  ) { }
+  ) {}
 
   onModuleInit(): void {
     const interval = setInterval(() => {

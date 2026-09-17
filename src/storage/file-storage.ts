@@ -13,5 +13,5 @@ export abstract class FileStorage {
   abstract stat(type: FileType, id: SafeId): Promise<FileStat | null>;
 }
 
-export abstract class HotStorage extends FileStorage { }
-export abstract class ArchiveStorage extends FileStorage { }
+export abstract class HotStorage extends FileStorage {}
+export abstract class ArchiveStorage extends FileStorage {}

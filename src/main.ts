@@ -12,7 +12,9 @@ async function bootstrap() {
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('EP Files API')
-    .setDescription('Tiered file storage API — hot/archive object storage with size-based lifecycle management')
+    .setDescription(
+      'Tiered file storage API — hot/archive object storage with size-based lifecycle management',
+    )
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, swaggerConfig);

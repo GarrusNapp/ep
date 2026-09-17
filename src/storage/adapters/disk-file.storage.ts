@@ -14,10 +14,9 @@ import { FileStat, FileStorage } from '../file-storage.js';
 const isNotFound = (error: unknown): boolean =>
   (error as NodeJS.ErrnoException)?.code === 'ENOENT';
 
-
 @Injectable()
 export class DiskFileStorage implements FileStorage, OnModuleInit {
-  constructor(private readonly rootPath: string) { }
+  constructor(private readonly rootPath: string) {}
 
   async onModuleInit(): Promise<void> {
     try {
